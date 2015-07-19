@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="gallery">
+<head>
+    <title>Lecture 10 task: gallery application | BSA 2015</title>
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/angular-resource.js"></script>
+    <script type="text/javascript" src="./js/app.module.js"></script>
+    <script type="text/javascript" src="./js/galleryController.js"></script>
+    <script type="text/javascript" src="./js/galleryFactory.js"></script>
+    <script type="text/javascript" src="./js/galleryService.js"></script>
+    <script type="text/javascript" src="./js/galleryConstant.js"></script>
+    <script type="text/javascript" src="./js/galleryDirective.js"></script>
+</head>
+<body ng-controller="GalleryController as imgCtrl" ng-cloak>
+    <header>
+        <h1 class="text-center">Lecture 10 task: gallery application with angular</h1>
+    </header>
+    <div class="wrap">
+        <div class="column">
+            <div class="column_title">
+                <h2>Getting data with $resource (factory)</h2>
+                <div gallery-directive></div>
+            </div>
+            <ul class="column_data">
+                <li ng-repeat="img in imgCtrl.imagesResource | orderBy:'id'">
+                    <img ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" />
+                    <p><strong>Title: </strong>{{img.title}} (id {{img.id}})</p>
+                </li>
+            </ul>
+        </div>
+        <div class="column">
+            <div class="column_title">
+                <h2>Getting data with $http (service)</h2>
+            </div>
+            <ul class="column_data">
+                <li ng-repeat="img in imgCtrl.imagesHttp | orderBy:'id'">
+                    <img  ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" />
+                    <p><strong>Title: </strong>{{img.title}} (id {{img.id}})</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
