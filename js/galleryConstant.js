@@ -4,5 +4,5 @@
     // Count of images to load. There are 200 photos.
     angular
         .module('gallery')
-        .constant('GET_COUNT', 5);
+        .constant('GET_COUNT', 13);
 })();

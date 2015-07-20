@@ -4,14 +4,6 @@
     <title>Lecture 10 task: gallery application | BSA 2015</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
-    <script type="text/javascript" src="./js/angular.min.js"></script>
-    <script type="text/javascript" src="./js/angular-resource.js"></script>
-    <script type="text/javascript" src="./js/app.module.js"></script>
-    <script type="text/javascript" src="./js/galleryController.js"></script>
-    <script type="text/javascript" src="./js/galleryFactory.js"></script>
-    <script type="text/javascript" src="./js/galleryService.js"></script>
-    <script type="text/javascript" src="./js/galleryConstant.js"></script>
-    <script type="text/javascript" src="./js/galleryDirective.js"></script>
 </head>
 <body ng-controller="GalleryController as imgCtrl" ng-cloak>
     <header>
@@ -21,12 +13,14 @@
         <div class="column">
             <div class="column_title">
                 <h2>Getting data with $resource (factory)</h2>
-                <div gallery-directive></div>
+                <div></div>
             </div>
             <ul class="column_data">
                 <li ng-repeat="img in imgCtrl.imagesResource | orderBy:'id'">
-                    <img ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" />
-                    <p><strong>Title: </strong>{{img.title}} (id {{img.id}})</p>
+                    <img ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" gallery-directive img-url="{{img.url}}" img-title="{{img.title}}" img-id="{{img.id}}" />
+                    <p>
+                        <strong>Title: </strong>{{img.title}} (id {{img.id}})
+                    </p>
                 </li>
             </ul>
         </div>
@@ -36,11 +30,21 @@
             </div>
             <ul class="column_data">
                 <li ng-repeat="img in imgCtrl.imagesHttp | orderBy:'id'">
-                    <img  ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" />
-                    <p><strong>Title: </strong>{{img.title}} (id {{img.id}})</p>
+                    <img ng-src="{{img.thumbnailUrl}}" alt="{{img.title}}" title="{{img.title}}" gallery-directive img-url="{{img.url}}" img-title="{{img.title}}" img-id="{{img.id}}" />
+                    <p>
+                        <strong>Title: </strong>{{img.title}} (id {{img.id}})
+                    </p>
                 </li>
             </ul>
         </div>
     </div>
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/angular-resource.js"></script>
+    <script type="text/javascript" src="./js/app.module.js"></script>
+    <script type="text/javascript" src="./js/galleryController.js"></script>
+    <script type="text/javascript" src="./js/galleryFactory.js"></script>
+    <script type="text/javascript" src="./js/galleryService.js"></script>
+    <script type="text/javascript" src="./js/galleryConstant.js"></script>
+    <script type="text/javascript" src="./js/galleryDirective.js"></script>
 </body>
 </html>
